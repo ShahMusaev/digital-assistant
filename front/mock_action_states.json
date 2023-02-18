@@ -1,0 +1,184 @@
+[
+	{
+		"id":0,
+		"type": "Menu",
+		"field": "Главная",
+		"Description": "Бла-бла-бла"
+	},
+	{
+		"id":1,
+		"type": "Menu",
+		"field": "База знаний",
+		"Description": "Бла-бла-бла"
+	},
+	{
+		"id":2,
+		"type": "Menu",
+		"field": "Мероприятия",
+		"Description": "Бла-бла-бла",
+		"Notification": 101
+	},
+	{
+		"id":3,
+		"type": "Menu",
+		"field": "Мои проекты",
+		"Description": "Бла-бла-бла",
+		"Notifications": [
+			"Не завершен проект"
+		]
+	},
+	{
+		"id":4,
+		"type": "Menu",
+		"field": "Архив проектов",
+		"Description": "Бла-бла-бла"
+	},
+	{
+		"id":5,
+		"type": "Menu",
+		"field": "Мои заявки",
+		"Description": "Бла-бла-бла",
+		"Notifications": [
+			"Изменение статуса заявки"
+		]
+	},
+	{
+		"id":6,
+		"type": "Menu",
+		"field": "Грантовые соглашения",
+		"Description": "Бла-бла-бла",
+		"Notifications": [
+			"Дедлайн подпись гранта"
+		]
+	},
+	{
+		"id":7,
+		"type": "Menu",
+		"field": "Отчеты",
+		"Description": "Бла-бла-бла",
+		"Notifications": [
+			"Изменение статуса", "Дедлайн отчетности"
+		]
+	},
+	{
+		"id":8,
+		"type": "Field",
+		"field": "Общее",
+		"Description": "Начнем! Советую ознакомиться тебе с рекомендациями и критериями оцениваниям по ССЫЛКАМ. Но ты также можешь спросить и у меня",
+		"Criteria": "Этот раздел оценивается по следующим критериям...",
+		"Children": [9, 10, 11, 12, 13]
+	},
+	{
+		"id":9,
+		"type": "FieldForFill",
+		"field": "Название проекта",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Action": "Голосовой ввод",
+		"Parent": 8
+	},
+	{
+		"id":10,
+		"type": "FieldForFill",
+		"field": "Регион реализации проекта",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Action": "Голосовой ввод",
+		"Parent": 8
+	},
+	{
+		"id": 11,
+		"type": "FieldForFill",
+		"field": "Автор проекта",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Action": "Голосовой ввод",
+		"Parent": 8
+	},
+	{
+		"id": 12,
+		"type": "FieldForFill",
+		"field": "Общая информация",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Action": "Голосовой ввод",
+		"Parent": 8
+	},
+	{
+		"id": 13,
+		"type": "Field",
+		"field": "Руководитель проекта",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Children": [14, 15, 16, 17, 18],
+		"Parent": 8
+	},
+	{
+		"id": 14,
+		"type": "FieldForFill",
+		"field": "Опыт руководителя",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Action": "Голосовой ввод",
+		"Parent": 13
+	},
+	{
+		"id": 15,
+		"type": "FieldForFill",
+		"field": "Описание функционала руководителя",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Action": "Голосовой ввод",
+		"Parent": 13
+	},
+	{
+		"id": 16,
+		"type": "FieldForFill",
+		"field": "Адрес регистрации",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Action": "Голосовой ввод",
+		"Parent": 13
+	},
+	{
+		"id": 17,
+		"type": "FieldForFill",
+		"field": "Резюме",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Action": "Голосовой ввод",
+		"Parent": 13
+	},
+	{
+		"id": 18,
+		"type": "FieldForFill",
+		"field": "Видео-визитка",
+		"Description": "Бла-бла-бла",
+		"Criteria": "Бла-бла-бла",
+		"Parent": 13
+	},
+	{
+		"id": 101,
+		"type": "Notification",
+		"field": "Новое мероприятие",
+		"Children": [201, 202],
+		"Parent": 2
+	},
+	{
+		"id": 201,
+		"type": "Action",
+		"field": "Подписаться",
+		"Parent": 101
+	},
+	{
+		"id": 202,
+		"type": "Action",
+		"field": "Отписаться",
+		"Parent": 101
+	},
+	{
+		"id": 2001,
+		"type": "Action",
+		"field": "Голосовой ввод"
+	}
+]
