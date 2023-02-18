@@ -70,55 +70,55 @@ const jsonStates = [
 	{
 		"id":0,
 		"field": "Главная",
-		"description": ["Бла-бла-бла"],
+		"description": ["Ты находишься на главной страничке сайта. Тут ты можешь выбрать регион и посмотреть прикрепленные к нему проекты"],
 		"children": []
 	},
 	{
 		"id":1,
 		"field": "База знаний",
-		"description": ["Бла-бла-бла"],
+		"description": ["В этом разделе находится методическая и нормативная информация по Росмолодёжь.Гранты"],
 		"children": []
 	},
 	{
 		"id":2,
 		"field": "Мероприятия",
-		"description": ["Что такое мероприятия и зачем тебе они нужны? Более подробно ты можешь ознакомиться по ССЫЛКАМ, но если вкратце...", "Также я позабочусь о том, чтобы ты ничего не пропустил с помощью уведомлений"],
+		"description": ["Что такое мероприятия и зачем тебе они нужны? Более подробно ты можешь ознакомиться с этим <a target='_blank' href='https://grants.myrosmol.ru/articles/12d64585-7d0f-4029-b7df-a34820bda36c' >тут</a>, но если вкратце, тут ты сможешь выбрать интересующий конкурс и подать заявку на грант", "Также я позабочусь о том, чтобы ты ничего не пропустил с помощью уведомлений"],
 		"children": [101]
 	},
 	{
 		"id":3,
 		"field": "Мои проекты",
-		"description": ["Бла-бла-бла"],
+		"description": ["В этом разделе, ты можешь добавить новый проект и выбрать шаблон по названию конкурса", "Если ты затрудняешься с заполнением формы, то самое время записаться в <a target='_blank' href='https://academy.myrosmol.ru/'>Академия Росмолодёжь.Гранты</a>. Тут ты научишься запускать и масштабировать социальные проекты в России, помогать подготовиться к грантовому конкурсу и повышать свои шансы на победу"],
 		"children": [103]
 	},
 	{
 		"id":4,
 		"field": "Архив проектов",
-		"description": ["Бла-бла-бла"],
+		"description": ["Тут хранятся твои архивы проектов"],
 		"children": []
 	},
 	{
 		"id":5,
 		"field": "Мои заявки",
-		"description": ["Бла-бла-бла"],
+		"description": ["В этом разделе можно отслеживать статусы заявок", "Подробно про статусы заявок можно посмотреть <a target='_blank' href='https://grants.myrosmol.ru/help?expanded=7'>здесь</a>"],
 		"children": [104]
 	},
 	{
 		"id":6,
 		"field": "Грантовые соглашения",
-		"description": ["Бла-бла-бла"],
+		"description": ["Здесь ты сможешь заключать соглашения с победителем грантового конкурса\n"],
 		"children": [105]
 	},
 	{
 		"id":7,
 		"field": "Отчеты",
-		"description": ["Бла-бла-бла"],
+		"description": ["Следи за своими отчетами в данном разделе"],
 		"children": [106]
 	},
 	{
 		"id":8,
 		"field": "Общее",
-		"description": ["Начнем! Советую ознакомиться тебе с рекомендациями и критериями оцениваниям по ССЫЛКАМ. Но ты также можешь спросить советы и у меня"],
+		"description": ["Начнем! Советую ознакомиться тебе с <a target='_blank' href='https://grants.myrosmol.ru/articles/d1cb7ea2-c67f-44ca-b780-73914d83361e'>рекомендациями</a> и <a target='_blank' href='https://grants.myrosmol.ru/articles/0758d8dd-4734-4f60-b293-918de81cb018'>критериями оцениваниям</a>. Но ты также можешь спросить советы и у меня"],
 		"children": [9, 10, 11, 12, 13]
 	},
 	{
@@ -228,14 +228,14 @@ const jsonStates = [
 	{
 		"id": 106,
 		"field": "Расскажи о уведомлениях",
-		"description": ["Ты вовремя узнаешь не только о изменении статуса твоих отчетов, но и не пропустишь сроки"],
+		"description": ["Ты вовремя узнаешь не только о изменении статуса своих отчетов, но и не пропустишь сроки"],
 		"parent": 7,
 		"children": []
 	},
 	{
 		"id": 19,
 		"field": "О проекте",
-		"description": ["Ты на шаг ближе! Внимательно изучи рекомендации по следующим разделы"],
+		"description": ["Ты на шаг ближе! Внимательно изучи рекомендации по следующим разделам"],
 		"children": [20, 26, 27]
 	},
 	{
@@ -293,89 +293,74 @@ const jsonStates = [
 		"description": ["В данном разделе необходимо указать весь перечень субъектов Российской Федерации, которые будут охвачены проектом."],
 		"parent": 19,
 		"children": []
-	}
+	},
+    {
+        "id": 40,
+        "field": "Выбери",
+        "description": [""],
+        "parent": -1,
+        "children": [41, 42, 43]
+    },
+    {
+        "id": 41,
+        "field": "Аккаунт/Профиль",
+        "description": [""],
+        "parent": 40,
+        "children": [44, 45, 46]
+    },
+    {
+        "id": 42,
+        "field": "Заявки",
+        "description": [""],
+        "parent": 40,
+        "children": [47]
+    },
+    {
+        "id": 43,
+        "field": "Другое",
+        "description": [""],
+        "parent": 40,
+        "children": [48]
+    },
+    {
+        "id": 44,
+        "field": "Проблемы с верификацией",
+        "description": ["Перейдите на главную страницу системы и нажмите кнопку \"обновить\" которая расположена рядом с аватаром вашего аккаунта, проблема должна исчезнуть.","Если аккаунт верифицирован, но данные не подтягиваются, то перейдите на главную страницу системы и нажмите кнопку \"обновить\" которая расположена рядом с аватаром вашего аккаунта, проблема должна исчезнуть", "Если же аккаунт верифицирован, но галочки в профиле нет, то Вам необходимо подтвердить свой аккаунт на сайте Госуслуг, после чего перезайти в профиль на старом модуле АИС, проверить наличие галочки возле Ваших инициалов, затем перезайти в аккаунт ГАИС. Инструкцию как подтвердить аккаунт в ЕСИА можно найти <a target='_blank' href='https://www.gosuslugi.ru/help/faq/c-1'>здесь</a>"],
+        "parent": 41,
+        "children": []
+    },
+    {
+        "id": 45,
+        "field": "Отмена верификации",
+        "description": ["Для этого перейдите в меню \"настройки\" в АИС myrosmol.ru/settings и нажмите отменить привязку ЕСИА ,либо перейдите в настройки аккаунта Госуслуг по <a target='_blank' href='https://lk.gosuslugi.ru/settings/system-permissions'>ссылке</a> и отмените привязку АИС"],
+        "parent": 41,
+        "children": []
+    },
+    {
+        "id": 46,
+        "field": "Удаление ЛК",
+        "description": ["Удаление личного кабинета \"Молодежь России\" производится вручную специалистами технической поддержки. Для того чтобы оставить заявку на удаление, Вам необходимо сообщить нам ID и e-mail аккаунта который необходимо удалить"],
+        "parent": 41,
+        "children": []
+    },
+    {
+        "id": 47,
+        "field": "Проблемы с подачей заявки",
+        "description": ["Если во время подачи заявки на грант не высвечивается созданный проект, то дело в том, что при создании данного проекта Вы использовали не подходящий шаблон для данного мероприятия. Узнать какой шаблон необходим Вы можете в правой части на странице мероприятия. Увидеть шаблон созданного проекта можно в строке под названием проекта"],
+        "parent": 42,
+        "children": []
+    },
+    {
+        "id": 48,
+        "field": "Ошибка 404",
+        "description": ["Ошибка 404 означает что у Вашего аккаунта нет доступа к данной странице. Это может быть из-за не подходящего возраста, региона проживания, или не выбранных направлений деятельности"],
+        "parent": 43,
+        "children": []
+    },
 ]
-var states = []
-jsonStates.forEach(element => states[element["id"]] = element)
 
-
-
-function firstInit() {
-    var pageCls = classifyCurrentPage()
-    var resEl = null
-    var resDescr = null
-    var resChildren = null
-
-    states.forEach((element) => {
-        if (element["id"] == pageCls) {
-            var children = []
-
-            if (element["parent"]) {
-                children.push("Назад")
-            }
-            element["children"].forEach((element2) => {
-                states.forEach((element3) => {
-                    if (element3["id"] == element2) {
-                        children.push(element3["field"])
-                    }
-                })
-            })
-            resEl = element
-            resDescr = element["description"]
-            resChildren = children
-            return;
-        }
-    })
-
-    return {"nextStep": resEl, "descr": resDescr, "children": resChildren}
-}
-
-
-// Return next state, message and list of variants
-function handle(state, message) {
-    var curState = null
-    var nextStep = null
-    var children = []
-
-    states.forEach((element) => {
-        if (element["id"] === state) {
-            curState = element
-        }
-    })
-
-    if (message.toUpperCase() === "Назад".toUpperCase()) {
-        nextStepId = curState["parent"] ? curState["parent"] : (cache["parent_state"] ? cache["parent_state"] : classifyCurrentPage())
-        states.forEach((element2) => {
-            if (element2["id"] === nextStepId) {
-                nextStep = element2
-            }
-        })
-    }
-    else {
-        if (curState["children"]) {
-            curState["children"].forEach((element) => {
-                states.forEach((element2) => {
-                    if (element2["id"] === element && element2["field"].toUpperCase() === message.toUpperCase()) {
-                        nextStep = element2
-                    }
-                })
-            })
-        }
-    }
-
-    if (nextStep["parent"]) {
-        children.push("Назад")
-    }
-    nextStep["children"].forEach((element) => {
-        states.forEach((element2) => {
-            if (element2["id"] === element) {
-                children.push(element2["field"])
-            }
-        })
-    })
-
-    return {"nextStep": nextStep, "descr": nextStep["description"], "children": children}
-}
+let states = [];
+jsonStates.forEach(element => states[element["id"]] = element);
 
 /* eslint-disable */
 (() => {
@@ -446,11 +431,12 @@ setTimeout(()=>{
 
     function handlerInputMsg() {
         const userMessage = userInput.value;
+        const mainStateId = 40;
         addUserMessage(userMessage);
 
         let assistantMessage = ['Что вас интересует?'];
         addAssistantMessage(assistantMessage);
-        handlerSelectsByStateId(200);
+        handlerSelectsByStateId(mainStateId);
 
         userInput.value = "";
     }
