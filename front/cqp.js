@@ -32,7 +32,7 @@ function classifyCurrentPage() {
                     return 8
                 }
                 else if (searchText("В разделе необходимо дать понятное изложение всего проекта")) {
-                    return "О проекте"
+                    return 19
                 }
                 else if (searchText("Команда проекта – лица в возрасте от 14 до 35 лет.")) {
                     return "Команда"
@@ -66,186 +66,222 @@ function classifyCurrentPage() {
 }
 
 var cache = {};
-const states = [
-    {
-        "id":0,
-        "field": "Главная",
-        "description": "Бла-бла-бла"
-    },
-    {
-        "id":1,
-        "field": "База знаний",
-        "description": "Бла-бла-бла"
-    },
-    {
-        "id":2,
-        "field": "Мероприятия",
-        "description": "Бла-бла-бла",
-        "children": [101]
-    },
-    {
-        "id":3,
-        "field": "Мои проекты",
-        "description": "Бла-бла-бла",
-        "children": [103]
-    },
-    {
-        "id":4,
-        "field": "Архив проектов",
-        "description": "Бла-бла-бла"
-    },
-    {
-        "id":5,
-        "field": "Мои заявки",
-        "description": "Бла-бла-бла",
-        "children": [104]
-    },
-    {
-        "id":6,
-        "field": "Грантовые соглашения",
-        "description": "Бла-бла-бла",
-        "children": [105]
-    },
-    {
-        "id":7,
-        "field": "Отчеты",
-        "description": "Бла-бла-бла",
-        "children": [106]
-    },
-    {
-        "id":8,
-        "field": "Общее",
-        "description": "Начнем! Советую ознакомиться тебе с рекомендациями и критериями оцениваниям по ССЫЛКАМ. Но ты также можешь спросить и у меня",
-        "criteria": "Этот раздел оценивается по следующим критериям...",
-        "children": [9, 10, 11, 12, 13]
-    },
-    {
-        "id":9,
-        "field": "Название проекта",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [102],
-        "parent": 8
-    },
-    {
-        "id":10,
-        "field": "Регион реализации проекта",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [102],
-        "parent": 8
-    },
-    {
-        "id": 11,
-        "field": "Автор проекта",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [102],
-        "parent": 8
-    },
-    {
-        "id": 12,
-        "field": "Общая информация",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [102],
-        "parent": 8
-    },
-    {
-        "id": 13,
-        "field": "Руководитель проекта",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [14, 15, 16, 17, 18],
-        "parent": 8
-    },
-    {
-        "id": 14,
-        "field": "Опыт руководителя",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [102],
-        "parent": 13
-    },
-    {
-        "id": 15,
-        "field": "Описание функционала руководителя",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [102],
-        "parent": 13
-    },
-    {
-        "id": 16,
-        "field": "Адрес регистрации",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [102],
-        "parent": 13
-    },
-    {
-        "id": 17,
-        "field": "Резюме",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "children": [102],
-        "parent": 13
-    },
-    {
-        "id": 18,
-        "field": "Видео-визитка",
-        "description": "Бла-бла-бла",
-        "criteria": "Бла-бла-бла",
-        "parent": 13
-    },
-    {
-        "id": 101,
-        "field": "Расскажи о уведомлениях",
-        "description": "Чтобы тебе не пропустить появление новых возможностей для твоего проекта, я сообщу тебе о новых мероприятиях",
-        "parent": 2
-    },
-    {
-        "id": 102,
-        "field": "Голосовой ввод",
-        "description": "Продиктуй текст и я заполню поле за тебя"
-    },
-    {
-        "id": 103,
-        "field": "Расскажи о уведомлениях",
-        "description": "Если вдруг ты не закончишь оформлять проект, я напомню тебе об этом!",
-        "parent": 3
-    },
-    {
-        "id": 104,
-        "field": "Расскажи о уведомлениях",
-        "description": "Если статус одной из твоей заявок изменится, я тебе сообщу!",
-        "parent": 4
-    },
-    {
-        "id": 105,
-        "field": "Расскажи о уведомлениях",
-        "description": "Со мной ты не пропустишь срок подписи гранта!",
-        "parent": 6
-    },
-    {
-        "id": 106,
-        "field": "Расскажи о уведомлениях",
-        "description": "Ты вовремя узнаешь не только о изменении статуса твоих отчетов, но и не пропустишь сроки",
-        "parent": 7
-    }
+const jsonStates = [
+	{
+		"id":0,
+		"field": "Главная",
+		"description": ["Бла-бла-бла"]
+	},
+	{
+		"id":1,
+		"field": "База знаний",
+		"description": ["Бла-бла-бла"]
+	},
+	{
+		"id":2,
+		"field": "Мероприятия",
+		"description": ["Что такое мероприятия и зачем тебе они нужны? Более подробно ты можешь ознакомиться по ССЫЛКАМ, но если вкратце...", "Также я позабочусь о том, чтобы ты ничего не пропустил с помощью уведомлений"],
+		"children": [101]
+	},
+	{
+		"id":3,
+		"field": "Мои проекты",
+		"description": ["Бла-бла-бла"],
+		"children": [103]
+	},
+	{
+		"id":4,
+		"field": "Архив проектов",
+		"description": ["Бла-бла-бла"]
+	},
+	{
+		"id":5,
+		"field": "Мои заявки",
+		"description": ["Бла-бла-бла"],
+		"children": [104]
+	},
+	{
+		"id":6,
+		"field": "Грантовые соглашения",
+		"description": ["Бла-бла-бла"],
+		"children": [105]
+	},
+	{
+		"id":7,
+		"field": "Отчеты",
+		"description": ["Бла-бла-бла"],
+		"children": [106]
+	},
+	{
+		"id":8,
+		"field": "Общее",
+		"description": ["Начнем! Советую ознакомиться тебе с рекомендациями и критериями оцениваниям по ССЫЛКАМ. Но ты также можешь спросить советы и у меня"],
+		"children": [9, 10, 11, 12, 13]
+	},
+	{
+		"id":9,
+		"field": "Название проекта",
+		"description": ["Бла-бла-бла"],
+		"children": [102],
+		"parent": 8
+	},
+	{
+		"id":10,
+		"field": "Регион реализации проекта",
+		"description": ["Бла-бла-бла"],
+		"children": [102],
+		"parent": 8
+	},
+	{
+		"id": 11,
+		"field": "Автор проекта",
+		"description": ["Бла-бла-бла"],
+		"children": [102],
+		"parent": 8
+	},
+	{
+		"id": 12,
+		"field": "Общая информация",
+		"description": ["Бла-бла-бла"],
+		"children": [102],
+		"parent": 8
+	},
+	{
+		"id": 13,
+		"field": "Руководитель проекта",
+		"description": ["Бла-бла-бла"],
+		"children": [14, 15, 16, 17, 18],
+		"parent": 8
+	},
+	{
+		"id": 14,
+		"field": "Опыт руководителя",
+		"description": ["Бла-бла-бла"],
+		"children": [102],
+		"parent": 13
+	},
+	{
+		"id": 15,
+		"field": "Описание функционала руководителя",
+		"description": ["Бла-бла-бла"],
+		"children": [102],
+		"parent": 13
+	},
+	{
+		"id": 16,
+		"field": "Адрес регистрации",
+		"description": ["Бла-бла-бла"],
+		"children": [102],
+		"parent": 13
+	},
+	{
+		"id": 17,
+		"field": "Резюме",
+		"description": ["Бла-бла-бла"],
+		"children": [102],
+		"parent": 13
+	},
+	{
+		"id": 18,
+		"field": "Видео-визитка",
+		"description": ["Бла-бла-бла"],
+		"parent": 13
+	},
+	{
+		"id": 101,
+		"field": "Расскажи о уведомлениях",
+		"description": ["Чтобы тебе не пропустить появление новых возможностей для твоего проекта, я сообщу тебе о новых мероприятиях"],
+		"parent": 2
+	},
+	{
+		"id": 102,
+		"field": "Голосовой ввод",
+		"description": ["Продиктуй текст и я заполню поле за тебя"]
+	},
+	{
+		"id": 103,
+		"field": "Расскажи о уведомлениях",
+		"description": ["Если вдруг ты не закончишь оформлять проект, я напомню тебе об этом!"],
+		"parent": 3
+	},
+	{
+		"id": 104,
+		"field": "Расскажи о уведомлениях",
+		"description": ["Если статус одной из твоей заявок изменится, я тебе сообщу!"],
+		"parent": 4
+	},
+	{
+		"id": 105,
+		"field": "Расскажи о уведомлениях",
+		"description": ["Со мной ты не пропустишь срок подписи гранта!"],
+		"parent": 6
+	},
+	{
+		"id": 106,
+		"field": "Расскажи о уведомлениях",
+		"description": ["Ты вовремя узнаешь не только о изменении статуса твоих отчетов, но и не пропустишь сроки"],
+		"parent": 7
+	},
+	{
+		"id": 19,
+		"field": "О проекте",
+		"description": ["Ты на шаг ближе! Внимательно изучи рекомендации по следующим разделы", "Этот раздел оценивается по следующим критериям..."],
+		"children": [20, 26, 27]
+	},
+	{
+		"id": 20,
+		"field": "Информация о проекте",
+		"description": [""],
+		"children": [21, 22, 23, 24, 25],
+		"parent": 19
+	},
+	{
+		"id": 21,
+		"field": "Краткая информация о проекте",
+		"description": [""],
+		"parent": 20
+	},
+	{
+		"id": 22,
+		"field": "Описание проблемы",
+		"description": [""],
+		"parent": 20
+	},
+	{
+		"id": 23,
+		"field": "Основные целевые группы",
+		"description": [""],
+		"parent": 20
+	},
+	{
+		"id": 24,
+		"field": "Опыт успешной реализации",
+		"description": [""],
+		"parent": 20
+	},
+	{
+		"id": 25,
+		"field": "Перспективы развития",
+		"description": [""],
+		"parent": 20
+	},
+	{
+		"id": 26,
+		"field": "Задачи",
+		"description": [""],
+		"parent": 19
+	},
+	{
+		"id": 27,
+		"field": "География проекта",
+		"description": [""],
+		"parent": 19
+	}
 ]
-function getStateByPage() {
-    var pageCls = classifyCurrentPage()
-    var res = null
-    states.forEach((element) => {
-        if (element["field"].toUpperCase() == pageCls.toUpperCase()) {
-            res = element["id"]
-            return;
-        }
-    })
+var states = []
+jsonStates.forEach(element => states[element["id"]] = element)
 
-    return res
-}
+
 
 function firstInit() {
     var pageCls = classifyCurrentPage()
@@ -254,7 +290,7 @@ function firstInit() {
     var resChildren = null
 
     states.forEach((element) => {
-        if (element["field"].toUpperCase() == pageCls.toUpperCase()) {
+        if (element["id"] == pageCls) {
             var children = []
 
             if (element["parent"]) {
@@ -291,7 +327,7 @@ function handle(state, message) {
     })
 
     if (message.toUpperCase() === "Назад".toUpperCase()) {
-        nextStepId = curState["parent"] ? curState["parent"] : (cache["parent_state"] ? cache["parent_state"] : getStateByPage())
+        nextStepId = curState["parent"] ? curState["parent"] : (cache["parent_state"] ? cache["parent_state"] : classifyCurrentPage())
         states.forEach((element2) => {
             if (element2["id"] === nextStepId) {
                 nextStep = element2
@@ -379,9 +415,9 @@ setTimeout(()=>{
         createMessage(message, "user-message")
     }
 
-    function addAssistantMessage(message) {
+    function addAssistantMessage(messages) {
         setTimeout(() => {
-            createMessage(message, "bot-message")
+            messages.forEach(element => {createMessage(element, "bot-message")})
         }, 1000);
     }
 
@@ -390,39 +426,6 @@ setTimeout(()=>{
             createSelectsMessage(selects, "bot-selects-message")
         }, 1000);
     }
-
-    function handlerInputMsg() {
-        const userMessage = userInput.value;
-
-        addUserMessage(userMessage);
-
-        let assistantMessage;
-        fetch("answer.json")
-            .then(response => response.json())
-            .then(data => {
-                if (data["question"][userMessage]) {
-                    console.log(data["question"][userMessage])
-                    assistantMessage = data["question"][userMessage]
-                }
-            })
-            .catch(error => console.error(error));
-
-        const assistantMessageC = "Хотите узнать о данном разделе подробнее ?";
-        if (assistantMessage) {
-            addAssistantMessage(assistantMessage);
-        } else {
-            addAssistantMessage(assistantMessageC);
-        }
-
-        userInput.value = "";
-    }
-
-    document.getElementById("send-btn").addEventListener("click", handlerInputMsg);
-    userInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            handlerInputMsg();
-        }
-    });
 
     const toggleButton = document.getElementById("toggle");
     const chatFooter = document.querySelector(".chat-footer");
@@ -456,18 +459,18 @@ setTimeout(()=>{
         return data.isVerified;
     }
 
-    addAssistantMessage('Привет, чем могу помочь?');
+    addAssistantMessage(['Привет, чем могу помочь?']);
 
     setTimeout(async () => {
         const isVerified = await getStatus();
         if (isVerified === true) {
-            addAssistantMessage("Пользовель верифицирован");
+            addAssistantMessage(["Пользовель верифицирован"]);
         } else {
-            addAssistantMessage("Вижу что ты еще не верифицировал свой аккаунт, это нужно обязательно сделать, если ты хочешь подавать свои проекты на гранты, вот что для этого нужно:");
-            addAssistantMessage("1. Необходимо иметь подтвержденную учетную запись на портале Госуслуг. Подробные инструкции по каждому из способов подтверждения учетной записи можно получить на портале Госуслуг в разделе «Помощь и поддержка»");
-            addAssistantMessage("2. После подтверждения учетной записи на Госуслугах необходимо в системе «Молодёжь России» во вкладке «редактировать профиль» верифицировать аккаунт через портал Госуслуг");
+            addAssistantMessage(["Вижу что ты еще не верифицировал свой аккаунт, это нужно обязательно сделать, если ты хочешь подавать свои проекты на гранты, вот что для этого нужно:",
+            "1. Необходимо иметь подтвержденную учетную запись на портале Госуслуг. Подробные инструкции по каждому из способов подтверждения учетной записи можно получить на портале Госуслуг в разделе «Помощь и поддержка»",
+            "2. После подтверждения учетной записи на Госуслугах необходимо в системе «Молодёжь России» во вкладке «редактировать профиль» верифицировать аккаунт через портал Госуслуг"]);
 
-            cache['cur_state'] = getStateByPage()
+            cache['cur_state'] = classifyCurrentPage()
 
         }
     }, 1000);
@@ -502,8 +505,10 @@ setTimeout(()=>{
         }
         console.log(selects);
 
-        addAssistantSelects(selects);
-        handlerAssistantSelects();
+        if (selects) {
+            addAssistantSelects(selects);
+            handlerAssistantSelects();
+        }
     }
 
     setTimeout(function() {
