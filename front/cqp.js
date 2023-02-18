@@ -362,29 +362,18 @@ setTimeout(()=>{
 
         }}, 1000);
 
-    function handlePageClass() {
-        var cacheData = cache["cur_page"];
-        var curData = classifyCurrentPage();
+    let currentUrl = window.location.href;
+    let curData = classifyCurrentPage();
+    addAssistantMessage(curData)
 
-        if (cacheData == curData) {
-            return;
-        }
-        else {
-            cache["cur_page"] = curData;
+    // Устанавливаем слушатель на изменение URL
+    setInterval(function() {
+        if (window.location.href !== currentUrl) {
+            currentUrl = window.location.href;
+            console.log('URL изменен:', currentUrl);
+            curData = classifyCurrentPage();
             addAssistantMessage(curData)
-
-            pageStructure.forEach((element) => {
-                if (element["field"] == curData) {
-                    addAssistantMessage("Если хочешь узнать более подробно о пунтках в этом разделе, жми ниже")
-                    element["Children"].forEach((element2) => {
-                        addAssistantMessage("--" + element2["field"])
-                    })
-                }
-            })
         }
-    }
+    }, 1000);
 
-    document.addEventListener("click", function() {
-        handlePageClass()
-    });
 }, 5000);
