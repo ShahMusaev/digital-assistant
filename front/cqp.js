@@ -70,12 +70,14 @@ const jsonStates = [
 	{
 		"id":0,
 		"field": "Главная",
-		"description": ["Бла-бла-бла"]
+		"description": ["Бла-бла-бла"],
+		"children": []
 	},
 	{
 		"id":1,
 		"field": "База знаний",
-		"description": ["Бла-бла-бла"]
+		"description": ["Бла-бла-бла"],
+		"children": []
 	},
 	{
 		"id":2,
@@ -92,7 +94,8 @@ const jsonStates = [
 	{
 		"id":4,
 		"field": "Архив проектов",
-		"description": ["Бла-бла-бла"]
+		"description": ["Бла-бла-бла"],
+		"children": []
 	},
 	{
 		"id":5,
@@ -185,42 +188,49 @@ const jsonStates = [
 		"id": 18,
 		"field": "Видео-визитка",
 		"description": ["Бла-бла-бла"],
-		"parent": 13
+		"parent": 13,
+		"children": []
 	},
 	{
 		"id": 101,
 		"field": "Расскажи о уведомлениях",
 		"description": ["Чтобы тебе не пропустить появление новых возможностей для твоего проекта, я сообщу тебе о новых мероприятиях"],
-		"parent": 2
+		"parent": 2,
+		"children": []
 	},
 	{
 		"id": 102,
 		"field": "Голосовой ввод",
-		"description": ["Продиктуй текст и я заполню поле за тебя"]
+		"description": ["Продиктуй текст и я заполню поле за тебя"],
+		"children": []
 	},
 	{
 		"id": 103,
 		"field": "Расскажи о уведомлениях",
 		"description": ["Если вдруг ты не закончишь оформлять проект, я напомню тебе об этом!"],
-		"parent": 3
+		"parent": 3,
+		"children": []
 	},
 	{
 		"id": 104,
 		"field": "Расскажи о уведомлениях",
 		"description": ["Если статус одной из твоей заявок изменится, я тебе сообщу!"],
-		"parent": 4
+		"parent": 4,
+		"children": []
 	},
 	{
 		"id": 105,
 		"field": "Расскажи о уведомлениях",
 		"description": ["Со мной ты не пропустишь срок подписи гранта!"],
-		"parent": 6
+		"parent": 6,
+		"children": []
 	},
 	{
 		"id": 106,
 		"field": "Расскажи о уведомлениях",
 		"description": ["Ты вовремя узнаешь не только о изменении статуса твоих отчетов, но и не пропустишь сроки"],
-		"parent": 7
+		"parent": 7,
+		"children": []
 	},
 	{
 		"id": 19,
@@ -239,43 +249,50 @@ const jsonStates = [
 		"id": 21,
 		"field": "Краткая информация о проекте",
 		"description": [""],
-		"parent": 20
+		"parent": 20,
+		"children": []
 	},
 	{
 		"id": 22,
 		"field": "Описание проблемы",
 		"description": [""],
-		"parent": 20
+		"parent": 20,
+		"children": []
 	},
 	{
 		"id": 23,
 		"field": "Основные целевые группы",
 		"description": [""],
-		"parent": 20
+		"parent": 20,
+		"children": []
 	},
 	{
 		"id": 24,
 		"field": "Опыт успешной реализации",
 		"description": [""],
-		"parent": 20
+		"parent": 20,
+		"children": []
 	},
 	{
 		"id": 25,
 		"field": "Перспективы развития",
 		"description": [""],
-		"parent": 20
+		"parent": 20,
+		"children": []
 	},
 	{
 		"id": 26,
 		"field": "Задачи",
 		"description": [""],
-		"parent": 19
+		"parent": 19,
+		"children": []
 	},
 	{
 		"id": 27,
 		"field": "География проекта",
 		"description": [""],
-		"parent": 19
+		"parent": 19,
+		"children": []
 	}
 ]
 var states = []
