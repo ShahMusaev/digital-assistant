@@ -509,7 +509,6 @@ setTimeout(()=>{
             selectsP.forEach(selectP => {
                 selectP.addEventListener('click', (event) => {
                     addUserMessage(event.target.innerHTML);
-                    console.log(event.target.id);
                     handlerSelectsByStateId(event.target.id);
                 });
             });
@@ -528,7 +527,6 @@ setTimeout(()=>{
         for (let selectId of currentState['children']) {
             selects[selectId] = states[selectId].field;
         }
-        console.log(selects);
 
         if (selects) {
             addAssistantSelects(selects);
@@ -550,13 +548,48 @@ setTimeout(()=>{
         }
     }, 3000);
 
+    function inputFiled() {
+            const userMsg = document.getElementsByClassName("user-message");
+            const title = userMsg[userMsg.length - 2].querySelector('p'); // берем то что было перед 'Голосовой ввод'
+
+            const fields = document.getElementsByClassName("base-field__entry");
+            [...fields].forEach(field => {
+
+                if (field.parentElement.querySelector('label').innerText.indexOf(title.innerText) !== -1) {
+
+                    SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    const recognition = new SpeechRecognition();
+                    recognition.lang = 'ru'; // set the language
+                    recognition.onresult = (event) => {
+                        const transcript = event.results[event.results.length - 1][0].transcript;
+                        console.log(transcript);
+                        field.firstElementChild.innerHTML = transcript;
+                    };
+
+                    recognition.onerror = (event) => {
+                        console.error(event.error);
+                    };
+                    recognition.start();
+                    return true;
+                }
+            });
+        return false;
+    }
+
     function handlerVoiceToText () {
+
+        const assistantMsg = document.getElementsByClassName("bot-message");
+        const lastAnswer = assistantMsg[assistantMsg.length - 1].querySelector('p');
+
+        if (lastAnswer.innerText === 'Продиктуй текст и я заполню поле за тебя') {
+            return inputFiled();
+        }
+
         SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
         recognition.lang = 'ru'; // set the language
         recognition.onresult = (event) => {
             const transcript = event.results[event.results.length - 1][0].transcript;
-            console.log(transcript);
 
             const messageSelects = document.getElementsByClassName("bot-selects-message");
             // следим за последним выбором
